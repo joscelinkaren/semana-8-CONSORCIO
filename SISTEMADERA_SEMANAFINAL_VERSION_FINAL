@@ -1,94 +1,108 @@
-# INICIO DEL SISTEMA
-print("SISTEMA DE REGISTRO DE COMPRAS Y VENTAS - CONSORCIO MARY E.I.R.L.")
 
-# Lista de categorías
-categorias = ["listones", "triplay", "vigas", "osb", "fenolico", "calamina", "otros"]
+# SISTEMA DE REGISTRO INTERNO DE COMPRAS Y VENTAS
 
-# Función para mostrar y seleccionar categoría
-def seleccionar_categoria():
-    print("categorias disponibles")
+print("SISTEMA DE REGISTRO INTERNO DE CONSORCIO MARY E.I.R.L.")
+
+rol = input("Ingrese su rol (dueño/vendedor): ")
+
+# Lista de categorias
+categorias = ["Listones", "Vigas", "OSB", "Triplay", "Fenolico", "Calaminas", "Otros"]
+
+# Mostrar categorias
+def mostrar_categorias():
+    print("\n CATEGORÍAS DISPONIBLES")
     for i in range(len(categorias)):
         print(f"{i + 1}. {categorias[i]}")
-    seleccion = int(input("seleccione una categoría (1-7): "))
+    
 
-    if 1 <= seleccion <= len(categorias):
-        return categorias[seleccion - 1]
-    else:
-        print("categoría inválida.")
-        return None
-
-# ingresar rol
-rol = input("ingrese su rol (dueño/vendedor): ")
-
-# rol del dueño
+# para el rol DUEÑO
 if rol == "dueño":
     opcion = 0
-    while opcion != 2:
-        print("sistema para el dueño")
+    while opcion != 3:
+        print("\n AREA DE COMPRAS")
         print("1. Registrar compra")
-        print("2. Salir")
-        opcion = int(input("ingrese opción: "))
+        print("2. Ver categorías de productos")
+        print("3. Salir")
+        opcion = int(input("Seleccione una opción: "))
 
         if opcion == 1:
-            proveedor = input("nombre del proveedor: ")
-
-            # Seleccionar categoría
-            nombre_categoria = seleccionar_categoria()
+            proveedor = input("Ingrese nombre del proveedor: ")
+            mostrar_categorias()
+            categoria = int(input("Seleccione una categoría (1-7): "))
             
-            if nombre_categoria:
-                tipo = input(f"ingresar el tipo de madera {nombre_categoria}: ")
-                precio = float(input("precio unitario (S/.): "))
-                cantidad = int(input("cantidad comprada: "))
-                total = cantidad * precio
-                
-                print("compra registrada")
-                print(f"proveedor: {proveedor}")
-                print(f"categoría: {nombre_categoria}")
-                print(f"tipo: {tipo}")
-                print(f"cantidad: {cantidad}")
-                print(f"precio unitario: S/. {precio:.2f}")
-                print(f"total: S/. {total:.2f}")
+            if 1 <= categoria <= len(categorias):
+                nombre_categoria = categorias[categoria - 1]
+                producto = input("Ingrese nombre del producto de compra: ")
+                cantidad = int(input("Ingrese cantidad comprada: "))
+                costo_unitario = float(input("Ingrese costo unitario (S/.): "))
+                total = cantidad * costo_unitario
 
-        if opcion == 2:
+                print("\n COMPRA REGISTRADA")
+                print(f"Proveedor  : {proveedor}")
+                print(f"Categoría  : {nombre_categoria}")
+                print(f"Producto   : {producto}")
+                print(f"Cantidad   : {cantidad}")
+                print(f"Costo unitario  : S/. {costo_unitario:.2f}")
+                print(f"TOTAL COMPRA: S/. {total:.2f}")
+            else:
+                print("Categoría inválida.")
+        
+        elif opcion == 2:
+            mostrar_categorias()
+        elif opcion == 3:
             print("Saliendo del sistema")
         else:
-            print("vuelve a intentar")
+            print("Intente nuevamente")
 
-# rol vendedor
-
+# para el rol VENDEDOR 
 elif rol == "vendedor":
     opcion = 0
-    while opcion != 2:
-        print("sistema del vendedor")
+    while opcion != 3:
+        print("\n AREA DE VENTAS")
         print("1. Registrar venta")
-        print("2. Salir")
-        opcion = int(input("Ingrese opción: "))
+        print("2. Ver categorías de productos")
+        print("3. Salir")
+        
+        opcion = int(input("Seleccione una opción: "))
 
         if opcion == 1:
-            cliente = input("Nombre del cliente: ")
-            factura = input("¿Desea factura (sí/no)?: ")
+            cliente = input("Ingrese nombre del cliente: ")
+            
+            #preguntar si requiere boleta o factura
+            comprobante=input("¿Desea comprobante? (si/no):")
+            if comprobante == "si" or comprobante =="si":
+                generar_comprobante="el cliente solicito comprobante"
+            else:
+                genrerar_comprobante="el cliente no desea comprobante"
+            
+            mostrar_categorias()
+            categoria = int(input("Seleccione una categoría (1-7): "))
 
-            # selecciona categoria
-            nombre_categoria = seleccionar_categoria()
+            if 1 <= categoria <= len(categorias):
+                nombre_categoria = categorias[categoria - 1]
+                producto = input("Ingrese nombre del producto vendido: ")
+                cantidad = int(input("Ingrese cantidad vendida: "))
+                precio_unitario = float(input("Ingrese precio unitario (S/.): "))
+                total = cantidad * precio_unitario
 
-            tipo = input(f"ingrese el tipo de madera de la categoria {nombre_categoria}: ")
-            precio = float(input("precio unitario (S/.): "))
-            cantidad = int(input("cantidad vendida: "))
-            total = cantidad * precio
-
-            print("venta registrada con exito")
-            print(f"cliente: {cliente}")
-            print(f"categoría: {nombre_categoria}")
-            print(f"tipo: {tipo}")
-            print(f"Cantidad: {cantidad}")
-            print(f"precio unitario: S/. {precio:.2f}")
-            print(f"total: S/. {total:.2f}")
-            print(f"factura: {factura}")
-
+                print("\n VENTA REGISTRADA")
+                print(f"Cliente    : {cliente}")
+                print(f"Categoría  : {nombre_categoria}")
+                print(f"Producto   : {producto}")
+                print(f"Cantidad   : {cantidad}")
+                print(f"Precio u.  : S/. {precio_unitario:.2f}")
+                print(f"TOTAL VENTA: S/. {total:.2f}")
+            else:
+                print("Categoría inválida.")
+        
         elif opcion == 2:
-            print("saliendo del sistema de ventas...")
+            mostrar_categorias()
+        elif opcion == 3:
+            print("Saliendo del sistema")
         else:
-            print("Opción no válida. Intente nuevamente.")
+            print("Intente nuevamente")
 
+# Rol no válido
 else:
-    print("error el sistema se cerrara")
+    print("Rol no reconocido")
+
