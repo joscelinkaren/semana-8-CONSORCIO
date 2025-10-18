@@ -1,8 +1,8 @@
-# INICIO DEL SISTEMA
+# INICIO DEL SISTEMADERA
 print("SISTEMA DE REGISTRO DE COMPRAS Y VENTAS - CONSORCIO MARY E.I.R.L.")
 
 # Lista de categorías
-categorias = ["Listones", "Triplay", "Vigas", "OSB", "Fenolico", "Calamina", "Otros"]
+categorias = ["listones", "triplay", "vigas", "osb", "fenolico", "calamina", "otros"]
 
 # Función para mostrar y seleccionar categoría
 def seleccionar_categoria():
@@ -78,7 +78,7 @@ elif rol == "vendedor":
             print(f"cliente: {cliente}")
             print(f"categoría: {nombre_categoria}")
             print(f"tipo: {tipo}")
-            print(fcCantidad: {cantidad}")
+            print(f"Cantidad: {cantidad}")
             print(f"precio unitario: S/. {precio:.2f}")
             print(f"total: S/. {total:.2f}")
             print(f"factura: {factura}")
