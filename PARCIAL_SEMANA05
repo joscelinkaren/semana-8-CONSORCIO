@@ -1,0 +1,38 @@
+#inicio del sistema
+
+rol=input("ingrese su rol(dueño/vendeor): ")
+
+#si es el dueño
+if rol=="dueño":
+    opcion=0
+    while opcion !=2: #mientras no elija salir
+        print("dueño")
+        print("1. registrar comprar")
+        print("2. salir")
+        opcion =int(input("ingrese opcion: "))
+        if opcion==1:
+            proveedor=input("proveedor: ")
+            tipo =input("tipo de madera: ")
+            precio=float(input("precio unitario: "))
+            cantidad=int(input("local de registro(loca 1/local 2: "))
+            print("compra registrada con exito")
+        else:
+            print("saliendo del sistema")
+#si es el vendedor
+elif rol=="vendedor":
+    opcion=0
+    while opcion !=2:  #mientras no elija salir
+        print("vendedor")
+        print("1.registra venta")
+        print("2. salir")
+        opcion =int(input("ingrese opcion: "))
+
+        if opcion==1:
+            cliente=input("cliente: ")
+            tipo=input("tipo de madera: ")
+            cantidad=float(input("precio unitario: "))
+        else:
+                print("saliendo del sistema")
+#si el rol no es valido
+else:
+            print("error:salir del sistema")
