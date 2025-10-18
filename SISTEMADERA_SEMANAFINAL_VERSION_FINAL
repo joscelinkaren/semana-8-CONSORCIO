@@ -1,4 +1,4 @@
-# INICIO DEL SISTEMADERA
+# INICIO DEL SISTEMA
 print("SISTEMA DE REGISTRO DE COMPRAS Y VENTAS - CONSORCIO MARY E.I.R.L.")
 
 # Lista de categorías
@@ -34,26 +34,28 @@ if rol == "dueño":
 
             # Seleccionar categoría
             nombre_categoria = seleccionar_categoria()
-        
-        tipo = input(f"ingresar el tipo de madera {nombre_categoria}: ")
-        precio = float(input("precio unitario (S/.): "))
-        cantidad = int(input("cantidad comprada: "))
-        total = cantidad * precio
-
-        print("compra registrada")
-        print(f"proveedor: {proveedor}")
-        print(f"categoría: {nombre_categoria}")
-        print(f"tipo: {tipo}")
-        print(f"cantidad: {cantidad}")
-        print(f"precio unitario: S/. {precio:.2f}")
-        print(f"total: S/. {total:.2f}")
+            
+            if nombre_categoria:
+                tipo = input(f"ingresar el tipo de madera {nombre_categoria}: ")
+                precio = float(input("precio unitario (S/.): "))
+                cantidad = int(input("cantidad comprada: "))
+                total = cantidad * precio
+                
+                print("compra registrada")
+                print(f"proveedor: {proveedor}")
+                print(f"categoría: {nombre_categoria}")
+                print(f"tipo: {tipo}")
+                print(f"cantidad: {cantidad}")
+                print(f"precio unitario: S/. {precio:.2f}")
+                print(f"total: S/. {total:.2f}")
 
         if opcion == 2:
-            print("Saliendo del sistema de compras...")
-    else:
-        print("Opción no válida. Intente nuevamente.")
+            print("Saliendo del sistema")
+        else:
+            print("vuelve a intentar")
 
 # rol vendedor
+
 elif rol == "vendedor":
     opcion = 0
     while opcion != 2:
